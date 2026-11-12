@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Especificidad CSS</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        body {
+            background-color: #E8F1F2;
+            color: #102A36;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navegación */
+        .caja1 {
+            background-color: #087E8B;
+            min-height: 90px;
+            padding: 15px;
+        }
+
+        .btn-nav {
+            color: white;
+            text-decoration: none;
+            border: 2px solid white;
+            border-radius: 8px;
+            padding: 10px 18px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-nav:hover {
+            background-color: white;
+            color: #087E8B;
+        }
+
+        /* Contenido */
+        .contenido {
+            max-width: 1100px;
+            margin: auto;
+            padding: 35px 20px;
+        }
+
+        h1 {
+            color: #087E8B;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #087E8B;
+            font-size: 25px;
+            margin-top: 30px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            font-size: 17px;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        /* Imagen */
+        .imagen-especificidad {
+            width: 100%;
+            max-width: 850px;
+            height: auto;
+            display: block;
+            margin: 25px auto;
+            border-radius: 10px;
+        }
+
+        /* Ejemplo */
+        .ejemplo {
+            background-color: #D2E9E2;
+            border-left: 5px solid #087E8B;
+            padding: 15px 20px;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+
+        .ejemplo code {
+            color: #087E8B;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .btn-nav {
+                width: 100%;
+                text-align: center;
+            }
+
+            .contenido {
+                padding: 25px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+
+
+        <div class="row">
+            <nav class="col-12 caja1 d-flex flex-wrap align-items-center justify-content-center gap-3">
+
+                <a class="btn-nav" href="index.html">
+                    <i class="bi bi-code-slash"></i>
+                    Estructura y sintaxis
+                </a>
+
+                <a class="btn-nav" href="especificidad.html">
+                    <i class="bi bi-layers"></i>
+                    Niveles de especificidad
+                </a>
+
+                <a class="btn-nav" href="pseudo.html">
+                    <i class="bi bi-cursor"></i>
+                    Pseudo Clases y Pseudo Elementos
+                </a>
+
+                <a class="btn-nav" href="Boxmodel.html">
+                    <i class="bi bi-bounding-box"></i>
+                    Box Model
+                </a>
+
+            </nav>
+        </div>
+
+
+        <main class="contenido">
+
+            <h1>Especificidad en CSS</h1>
+
+            <h2>¿Qué es?</h2>
+
+            <p>
+                La especificidad es un conjunto de reglas que utiliza CSS
+                para determinar qué estilo tiene mayor prioridad cuando
+                varios selectores intentan modificar el mismo elemento HTML.
+                Es decir, permite decidir qué regla se aplica cuando existen
+                diferentes estilos para un mismo elemento.
+            </p>
+
+            <h2>¿Para qué sirve?</h2>
+
+            <p>
+                Sirve para establecer qué regla de CSS tiene mayor prioridad.
+                Esto permite evitar conflictos entre estilos y controlar
+                cómo se visualizan los elementos de una página web.
+            </p>
+
+            <h2>¿Cómo funciona?</h2>
+
+            <p>
+                Cada selector tiene un nivel de especificidad. Cuando varias
+                reglas CSS afectan al mismo elemento, el navegador compara
+                su prioridad y aplica la regla correspondiente. En general,
+                los selectores ID tienen más especificidad que las clases,
+                y las clases tienen más que los selectores de elementos.
+            </p>
+
+            <h2>Niveles de especificidad</h2>
+
+            <p>
+                Los selectores tienen diferentes valores de prioridad.
+                La siguiente imagen muestra cómo se organizan los principales
+                niveles de especificidad en CSS:
+            </p>
+
+            <img src="img/a.webp" alt="Infografía de los niveles de especificidad CSS" class="imagen-especificidad">
+
+            <h2>Ejemplo práctico</h2>
+
+            <p>
+                Si un mismo párrafo tiene un estilo definido por una clase
+                y también por un ID, normalmente se aplicará el estilo del ID,
+                porque tiene mayor especificidad.
+            </p>
+
+            <div class="ejemplo">
+                <code>
+                    #titulo { color: blue; }<br>
+                    .titulo { color: red; }
+                </code>
+                <p class="mt-2 mb-0">
+                    En este caso, el texto será azul porque el selector ID
+                    tiene mayor especificidad que el selector de clase.
+                </p>
+            </div>
+
+            <h2>Importancia de la especificidad</h2>
+
+            <p>
+                Conocer la especificidad permite escribir código CSS más
+                organizado, solucionar conflictos entre estilos y tener
+                un mayor control sobre el diseño de una página web.
+            </p>
+
+            <div class="text-center mt-4">
+                <a href="index.html" class="btn btn-dark">
+                    <i class="bi bi-house-fill"></i>
+                    Volver al inicio
+                </a>
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
